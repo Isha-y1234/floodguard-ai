@@ -30,3 +30,5 @@ __pycache__/
 
 # Test/local files
 gemini_test.json
+.vercel
+.env*

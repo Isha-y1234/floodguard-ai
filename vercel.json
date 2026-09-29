@@ -16,7 +16,13 @@
     "backend": {
       "root": "backend",
       "framework": "fastapi",
-      "entrypoint": "main:app"
+      "entrypoint": "main:app",
+      "functions": {
+        "main.py": {
+          "includeFiles": "{models/floodguard_person_v2.pt,services/best_flood_risk_model.joblib,services/feature_names.joblib,services/label_mapping.joblib}",
+          "excludeFiles": "{test_*.py,test_images/**,operations/*.md,operations/*.sql,services/.env,**/__pycache__/**,**/*.pyc}"
+        }
+      }
     }
   },
   "rewrites": [
