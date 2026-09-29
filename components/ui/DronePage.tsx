@@ -255,7 +255,7 @@ export default function DronePage() {
         formData.append("file", file)
 
         // IMPORTANT: existing endpoint and model are unchanged.
-        const response = await fetch("http://127.0.0.1:8000/predict", {
+        const response = await fetch("/api/backend/predict", {
           method: "POST",
           body: formData,
         })

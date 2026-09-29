@@ -1,3 +1,12 @@
+import sys
+import types
+from pathlib import Path
+
+if __package__ in (None, ""):
+    backend_package = types.ModuleType("backend")
+    backend_package.__path__ = [str(Path(__file__).resolve().parent)]
+    sys.modules.setdefault("backend", backend_package)
+
 from fastapi import FastAPI, File, UploadFile, HTTPException, Form, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
@@ -165,7 +174,7 @@ app.add_middleware(
 # LOAD DRONE MODEL
 # ============================================================
 
-MODEL_PATH = "backend/models/floodguard_person_v2.pt"
+MODEL_PATH = str(Path(__file__).resolve().parent / "models" / "floodguard_person_v2.pt")
 
 # Detection configuration
 # 0.50 removes very weak false-positive predictions while

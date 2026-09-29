@@ -90,7 +90,7 @@ export default function Dashboard() {
     async function loadSensorData() {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_FLOODGAURD_API_URL || "http://localhost:8000"}/api/thingspeak/sensor-data`,
+          "/api/backend/api/thingspeak/sensor-data",
           { cache: "no-store" },
         )
         if (!response.ok) return

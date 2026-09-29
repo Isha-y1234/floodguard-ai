@@ -636,8 +636,7 @@ export default function SafeRoutePlanner() {
     setLoading(true)
     setLocationError(null)
 
-    const apiUrl =
-      process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000"
+    const apiUrl = "/api/backend"
 
     try {
       const response = await fetch(

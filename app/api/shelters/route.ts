@@ -1,3 +1,5 @@
+import { getBackendServiceUrl } from '@/lib/backend-service-url'
+
 /**
  * API Route: GET /api/shelters
  * 
@@ -24,9 +26,9 @@ export async function GET(request: Request) {
       )
     }
 
-    // Call the FastAPI backend
-    // Update the URL if your backend is running on a different port or host
-    const backendUrl = `http://localhost:8000/shelters?latitude=${latitude}&longitude=${longitude}`
+    const backendUrl = new URL('/shelters', getBackendServiceUrl())
+    backendUrl.searchParams.set('latitude', latitude)
+    backendUrl.searchParams.set('longitude', longitude)
 
     const backendResponse = await fetch(backendUrl, {
       method: 'GET',
